@@ -9,7 +9,12 @@ title('Root finding Using Newton Raphson Method');
 fplot(0,'-k')
 xlim([-5,5])
 grid on
-fprintf("\n#    xi    f(xi)    er\n");
+%fprintf("\n#    xi    f(xi)    er\n");
+fprintf('\n%4s  %12s  %12s  %12s  %12s  %12s  %12s  %12s\n', ...
+        '#','a','b','xi','f(a)','f(b)','f(xi)','er');
+
+fprintf('--------------------------------------------------------------------------------------------\n');
+
 count = 0;
 er=1;
 xi=x0;
@@ -30,7 +35,10 @@ while(abs(er)>es&&count<maxit)
         er=abs((xi)-xold)/xi;
     end
     erplot(count)=er;
-    fprintf("\n%3g    %10g     %10.3g     %10.3g \n",count,xi,fxi,er);
+   % fprintf("\n%3g    %10g     %10.3g     %10.3g \n",count,xi,fxi,er);
+
+    fprintf('%4d  %12.6f  %12.6f  %12.6f  %12.3e  %12.3e  %12.3e  %12.3e\n', ...
+        count,a,b,xi,fa,fb,fxi,er);
 end
 %final root
 fprintf("\nRoot found at x=%10.6g\n",xi);
